@@ -1,0 +1,11 @@
+id,name,role,department,email,joined_date,status
+1,山田太郎,会長,総務部,yamada@example.com,2020-04-01,active
+2,佐藤花子,副会長,経理部,sato@example.com,2020-04-15,active
+3,鈴木一郎,理事,営業部,suzuki@example.com,2020-05-01,active
+4,田中美咲,理事,広報部,tanaka@example.com,2020-06-01,active
+5,高橋健太,会員,総務部,takahashi@example.com,2021-01-10,active
+6,伊藤優子,会員,経理部,ito@example.com,2021-03-15,active
+7,渡辺剛,会員,営業部,watanabe@example.com,2021-07-20,active
+8,中村真理,会員,広報部,nakamura@example.com,2021-09-01,inactive
+9,小林浩二,会員,技術部,kobayashi@example.com,2022-01-05,active
+10,加藤由美,会員,企画部,kato@example.com,2022-04-01,active

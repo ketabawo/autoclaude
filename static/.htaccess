@@ -1,0 +1,20 @@
+# セキュリティヘッダの設定
+<IfModule mod_headers.c>
+    # X-Frame-Options: クリックジャッキング攻撃を防止
+    # SAMEORIGIN: 同一オリジンからのみフレーム表示を許可
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # 追加のセキュリティヘッダ（推奨）
+    # X-Content-Type-Options: MIMEタイプのスニッフィングを防止
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # X-XSS-Protection: XSS攻撃を防止（レガシーブラウザ向け）
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Referrer-Policy: リファラー情報の送信を制御
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content-Security-Policy: XSS攻撃やデータインジェクション攻撃を防止
+    # SvelteKitアプリケーション用の設定
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jsdelivr.net https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: https://www.google-analytics.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://api.emailjs.com https://www.google.com/recaptcha/; frame-src 'self' https://www.google.com https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+</IfModule>

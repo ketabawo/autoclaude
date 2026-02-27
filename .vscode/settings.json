@@ -1,0 +1,15 @@
+{
+  "rainbow_csv.auto_detect_separators": [",", "\t", "|", ";"],
+  "rainbow_csv.csv_separator_pipe": true,
+  "rainbow_csv.align_in_vscode": false,
+  "[csv]": {
+    "rainbow_csv.separator": ","
+  },
+  "[tsv]": {
+    "rainbow_csv.separator": "\t"
+  },
+  "cSpell.words": [
+    "ERGNMWNJL",
+    "grecaptcha"
+  ]
+}
