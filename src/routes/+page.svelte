@@ -36,19 +36,13 @@
   // Countdown timer
   let countdownText = '';
 
-  // 参加者の声の展開状態
-  let showAllTestimonials = false;
-
-  // よくある質問の展開状態
-  let showAllFAQs = false;
-
   // Hero image - ランダムに1枚を選択
   const heroSlides = [
-    { image: '/images/hero-bg0.webp', photographer: 'konpei104405さん' },
-    { image: '/images/hero-bg1.webp', photographer: 'konpei104405さん' },
-    { image: '/images/hero-bg2.webp', photographer: 'konpei104405さん' }
+    { image: '/images/hero-bg0.webp', imageSp: '/images/hero-bg0-sp.webp', photographer: 'konpei104405さん' },
+    { image: '/images/hero-bg1.webp', imageSp: '/images/hero-bg1-sp.webp', photographer: 'konpei104405さん' },
+    { image: '/images/hero-bg2.webp', imageSp: '/images/hero-bg2-sp.webp', photographer: 'konpei104405さん' }
   ];
-  
+
   // ページロード時にランダムに1枚を選択
   const randomIndex = Math.floor(Math.random() * heroSlides.length);
   const selectedHeroImage = heroSlides[randomIndex];
@@ -212,7 +206,7 @@
       );
 
       if (response.status === 200) {
-        submitMessage = '参加表明を受け付けました。ありがとうございます！';
+        submitMessage = 'done';
         entryForm = {
           name: '', handleName: '', email: '', bikeModel: '',
           prefecture: '', participationRate: '', companions: '', remarks: ''
@@ -236,13 +230,6 @@
       }
     } finally {
       isSubmitting = false;
-      setTimeout(() => {
-        if (submitMessage) {
-          closeEntryModal();
-        }
-        submitMessage = '';
-        submitError = '';
-      }, 3000);
     }
   }
 
@@ -267,7 +254,7 @@
   }
 
   function updateCountdown() {
-    const deadline = new Date('2025-11-09T06:00:00+09:00'); // 2025年11月9日 朝6時（JST）
+    const deadline = new Date('2026-05-10T06:00:00+09:00'); // 2026年5月10日 朝6時（JST）
     const now = new Date();
     const diff = deadline.getTime() - now.getTime();
 
@@ -373,21 +360,37 @@
 </script>
 
 <svelte:head>
+  <link rel="preload" as="image" type="image/webp" href="/images/hero-bg0-sp.webp" media="(max-width: 767px)">
+  <link rel="preload" as="image" type="image/webp" href="/images/hero-bg0.webp" media="(min-width: 768px)">
   <title>始祖会 Kanto Owners Meeting【for GPZ1000RX & ZX-10 @関東】</title>
-  <meta name="description" content="始祖会Kanto Owners Meetingは春と秋に関東圏（主に神奈川県）で開催されるGPZ1000RX（ZXT00A/鯨）とZX-10（ZXT00B/鯱）オーナーのための交流を主としたオフ会です。2025年11月9日開催予定。もちろん関東圏外からの参加も大歓迎です。">
+  <meta name="description" content="始祖会Kanto Owners Meetingは春と秋に関東圏（主に神奈川県）で開催されるGPZ1000RX（ZXT00A/鯨）とZX-10（ZXT00B/鯱）オーナーのための交流を主としたオフ会です。2026年5月10日開催予定。もちろん関東圏外からの参加も大歓迎です。">
+  <link rel="canonical" href="https://kanto.shisokai.info/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kanto.shisokai.info/">
+  <meta property="og:title" content="始祖会 Kanto Owners Meeting">
+  <meta property="og:description" content="始祖会Kanto Owners Meetingは春と秋に関東圏（主に神奈川県）で開催されるGPZ1000RX（ZXT00A/鯨）とZX-10（ZXT00B/鯱）オーナーのための交流を主としたオフ会です。">
+  <meta property="og:image" content="https://kanto.shisokai.info/images/OGP.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="始祖会 Kanto Owners Meeting">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="始祖会 Kanto Owners Meeting">
+  <meta name="twitter:description" content="始祖会Kanto Owners Meetingは春と秋に関東圏（主に神奈川県）で開催されるGPZ1000RX（ZXT00A/鯨）とZX-10（ZXT00B/鯱）オーナーのための交流を主としたオフ会です。">
+  <meta name="twitter:image" content="https://kanto.shisokai.info/images/OGP.png">
   {@html `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Event",
-    "name": "始祖会 Kanto Owners Meeting 2025 Side-B",
+    "name": "始祖会 Kanto Owners Meeting 2026 Side-A",
     "description": "GPZ1000RX・ZX-10オーナーズミーティング。世に回遊している鯨と鯱を愛する孤高な主たちが邂逅を果たせる聖地",
     "url": "https://kanto.shisokai.info",
     "image": [
       "https://kanto.shisokai.info/images/OGP.png",
-      "https://kanto.shisokai.info/images/hero-1.webp",
-      "https://kanto.shisokai.info/images/hero-2.webp"
+      "https://kanto.shisokai.info/images/hero-bg0.webp",
+      "https://kanto.shisokai.info/images/hero-bg1.webp"
     ],
-    "startDate": "2025-11-09T09:00:00+09:00",
-    "endDate": "2025-11-09T11:00:00+09:00",
+    "startDate": "2026-05-10T09:00:00+09:00",
+    "endDate": "2026-05-10T11:00:00+09:00",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "location": {
@@ -418,7 +421,7 @@
       "price": "0",
       "priceCurrency": "JPY",
       "availability": "https://schema.org/InStock",
-      "validFrom": "2024-11-09T00:00:00+09:00"
+      "validFrom": "2026-03-02T00:00:00+09:00"
     }
   })}</script>`}
   {@html `<script type="application/ld+json">${JSON.stringify({
@@ -433,7 +436,7 @@
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Customer Support",
-      "url": "https://kanto.shisokai.info/contact"
+      "url": "https://kanto.shisokai.info/contact/"
     }
   })}</script>`}
   {@html `<script type="application/ld+json">${JSON.stringify({
@@ -450,41 +453,28 @@
   })}</script>`}
 </svelte:head>
 
-<!-- 中止アナウンスバナー -->
-<div class="flash-banner flash-alert">
-  <div class="flash-content">
-    <span class="material-icons">error_outline</span>
-    <div class="flash-message">
-      <strong>【重要なお知らせ】</strong>
-      雨天予報のため、本イベントは中止となりました。次回開催をお楽しみに。
-    </div>
-  </div>
-</div>
-
 <section class="hero">
   <!-- Background image -->
   <div 
     class="hero-bg" 
-    style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{selectedHeroImage.image}')"
+    style="--hero-bg: url('{selectedHeroImage.image}'); --hero-bg-sp: url('{selectedHeroImage.imageSp}')"
   ></div>
 
   <div class="container" style="position: relative; z-index: 3;">
     <div class="heroContent">
-      <h2><img src="/images/hero-title.webp" alt="Kanto Owners Meeting/関東オーナーズミーティング" class="heroTitleImage" /></h2>
+      <h1><img src="/images/hero-title.webp" alt="Kanto Owners Meeting/関東オーナーズミーティング" class="heroTitleImage" width="3624" height="326" /></h1>
       <p class="heroSubtitle">for <strong title="zxt00a">GPZ1000RX</strong> & <strong title="zxt00b">ZX-10</strong></p>
       <p class="heroDescription">
         世に回遊している鯨と鯱を愛する孤高な主たちが邂逅を果たせる聖地
-        <!-- <br><span class="heroCatchphrase">2025 Side-B 参加者募集中！</span> -->
+        <br><span class="heroCatchphrase">2026 Side-A 参加者募集中！</span>
       </p>
       <div class="heroButtons heroButtonsCentered">
-        <!-- 参加するボタンを一時非表示
         <button class="btn btnPrimary" on:click={showEntryModalHandler}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
           </svg>
           参加する
         </button>
-        -->
         <button class="btn btnSecondary" on:click={scrollToFeatures}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
@@ -493,7 +483,6 @@
           もっと詳しく
         </button>
       </div>
-      <!-- カウントダウンを一時非表示
       {#if countdownText}
         <div class="countdown">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -503,7 +492,6 @@
           {countdownText}
         </div>
       {/if}
-      -->
     </div>
   </div>
   <div class="heroMetaInfo" style="z-index: 3;">
@@ -550,13 +538,22 @@
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="entryModalContent" on:click|stopPropagation role="document">
       <div class="modalHeader">
-        <h3>始祖会KOM 2025 Side-B参加申込み</h3>
+        <h3>始祖会KOM 2026 Side-A参加申込み</h3>
         <button class="closeIconBtn" on:click={closeEntryModal} aria-label="閉じる">
           <span class="material-icons">close</span>
         </button>
       </div>
       <div class="entryModalBody">
 
+        {#if submitMessage === 'done'}
+          <div class="submitComplete">
+            <span class="material-icons submitCompleteIcon">check_circle</span>
+            <h4>参加表明を受け付けました</h4>
+            <p>ありがとうございます！</p>
+            <p class="submitCompleteNote">※ 自動返信メールは送信されません。<br>数日経っても主宰ブログの参加者一覧が更新されない場合は、<br>他の手段で一報いただけると助かります。</p>
+            <button class="btn btnPrimary" on:click={closeEntryModal}>閉じる</button>
+          </div>
+        {:else}
         <form class="entryForm" on:submit={handleEntrySubmit}>
           <div class="formGroup">
             <label for="entryName">お名前 <span class="required">*</span></label>
@@ -579,7 +576,7 @@
               disabled={isSubmitting}
               placeholder="シャチ太郎"
             />
-            <p class="fieldNote">※こちらを入力するとお名前ではなくハンドルネームで表示されます。</p>
+            <p class="fieldNote">※こちらを入力するとお名前ではなくハンドルネームで表示されます。<br>※主宰がInstagramアカウントを知っている場合はアカウント名を勝手に表示します。</p>
           </div>
 
           <div class="formGroup">
@@ -784,13 +781,6 @@
             <p>※ 自動返信メールは送信されません。数日経っても参加者が更新されない場合は他の手段で一報頂けると助かります。</p>
           </div>
 
-          {#if submitMessage}
-            <div class="alertSuccess">
-              <span class="material-icons">check_circle</span>
-              {submitMessage}
-            </div>
-          {/if}
-
           {#if submitError}
             <div class="alertError">
               <span class="material-icons">error</span>
@@ -798,6 +788,7 @@
             </div>
           {/if}
         </form>
+        {/if}
       </div>
     </div>
   </div>
@@ -822,15 +813,7 @@
     <div class="featuresGrid">
       <div class="featureItem" id="freedom-style">
         <div class="featureContent">
-          <div class="featureImage">
-            <img 
-              src="/images/feature0.webp" 
-              alt="自由なスタイル" 
-              loading="lazy"
-              width="400"
-              height="300"
-              decoding="async" />
-          </div>
+          <div class="featureImage" style="background-image: url('/images/feature0.webp')"></div>
           <div class="featureText">
             <h3><span class="material-icons">filter_1</span> 自由なスタイル</h3>
             <p>楽しみ方は十人十色。<br>始祖会関東は組織・団体ではないので所属縛りもなく一般常識のあるGPZ1000RXもしくはZX-10のオーナーであれば基本的に誰でも参加できます。<br>もちろん年齢や性別、所有歴やカスタム有無など一切問わないフラットでフレンドリーな参加者（イケオジ）ばかりなので気軽にお楽しみいただけます。</p>
@@ -839,15 +822,7 @@
       </div>
       <div class="featureItem">
         <div class="featureContent">
-          <div class="featureImage">
-            <img 
-              src="/images/feature1.webp" 
-              alt="年2回開催" 
-              loading="lazy"
-              width="400"
-              height="300"
-              decoding="async" />
-          </div>
+          <div class="featureImage" style="background-image: url('/images/feature1.webp')"></div>
           <div class="featureText">
             <h3><span class="material-icons">filter_2</span> 年2回開催</h3>
             <p>始祖会 Kanto Owners Meetingは同一ミーティングとしては珍しい年2回開催なのが大きな特長です。春のSide-AをRX(ZXT00A)、秋のSide-BをZX-10(ZXT00B)とし昭和なカセットテープと掛けています。<br>故障して動けない車両を軽トラに乗せて参加するツワモノもいますよ！<br>関東圏外や新規、女性参加者絶賛募集中〜</p>
@@ -856,15 +831,7 @@
       </div>
       <div class="featureItem">
         <div class="featureContent">
-          <div class="featureImage">
-            <img 
-              src="/images/feature2.webp" 
-              alt="セキュリティ" 
-              loading="lazy"
-              width="400"
-              height="300"
-              decoding="async" />
-          </div>
+          <div class="featureImage" style="background-image: url('/images/feature2.webp')"></div>
           <div class="featureText">
             <h3><span class="material-icons">filter_3</span> 取り組み</h3>
             <p>セキュリティ強化目的で専用IDカードホルダを無料配布し非参加者と容易に判別できるようにしています。市場価値では測れない大事なあなたの愛車を守るための施策です。<br>また、参加者同士の交流を促す目的もあります。<br>普段からオンラインでも交流できるようLINEグループ<span class="noteMark">（※）</span>もございます。<br><br><span class="noteText">※グループ参加には1度以上参加経験がある事が条件です</span></p>
@@ -987,67 +954,13 @@
         </div>
       </div>
 
-      <!-- 条件付きで表示される残りの件 -->
-      {#if showAllTestimonials}
-
-        <div class="testimonialItem additionalTestimonial">
-          <div class="testimonialContent">
-            <div class="testimonialText">
-              <p>第1回から参加できて光栄です。これからもどうぞよろしくお願い致します</p>
-            </div>
-            <div class="testimonialAuthor">
-              <span class="material-icons">record_voice_over</span>
-              <span>
-                <span class="authorName">神奈川県 Mさん</span>
-                <span class="authorDetail">GPZ1000RX</span>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonialItem additionalTestimonial">
-          <div class="testimonialContent">
-            <div class="testimonialText">
-              <p>飛び入りにもかかわらず暖かく迎え入れていただき感謝してます。またよろしくお願いします</p>
-            </div>
-            <div class="testimonialAuthor">
-              <span class="material-icons iconBlack">record_voice_over</span>
-              <span>
-                <span class="authorName">千葉県 Tさん</span>
-                <span class="authorDetail">ZX-10</span>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonialItem additionalTestimonial">
-          <div class="testimonialContent">
-            <div class="testimonialText">
-              <p>始祖会で知り合った仲間と、バイク談義に花を咲かせる時間がたまらなく好きです。</p>
-            </div>
-            <div class="testimonialAuthor">
-              <span class="material-icons">record_voice_over</span>
-              <span>
-                <span class="authorName">東京都 Hさん</span>
-                <span class="authorDetail">GPZ1000RX</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      {/if}
     </div>
 
-    <!-- もっと見る/閉じるボタン -->
     <div class="showMoreContainer">
-      <button 
-        class="showMoreButton"
-        on:click={() => showAllTestimonials = !showAllTestimonials}
-      >
-        <span class="material-icons">
-          {showAllTestimonials ? 'expand_less' : 'expand_more'}
-        </span>
-        {showAllTestimonials ? '少なく表示' : 'もっと見る (3件)'}
-      </button>
+      <a href="/voices" class="showMoreButton">
+        <span class="material-icons">expand_more</span>
+        もっと見る
+      </a>
     </div>
   </div>
 </section>
@@ -1072,62 +985,17 @@
         <p class="faqAnswer">参加は原則無料です。ただし、開催場所によって有料道路通行料や飲食代がかかる場合があります。</p>
       </div>
 
-      <!-- 条件付きで表示される残りの件 -->
-      {#if showAllFAQs}
-        <div class="faqItem additionalFAQ">
-          <h3 class="faqQuestion"><span class="material-icons">quiz</span>対象車両ではないのですが参加できますか？</h3>
-          <p class="faqAnswer">申し訳ありません。会場スペースやセキュリティ等の観点から原則としてGPZ1000RXもしくはZX10で来場できる方に限定させていただいております。例外として参加者の同行者に限り対象車以外でも参加可能です。</p>
-        </div>
-
-        <div class="faqItem additionalFAQ">
-          <h3 class="faqQuestion"><span class="material-icons">quiz</span>どんな人が参加していますか？</h3>
-          <p class="faqAnswer">GPZ1000RX（ZXT00A / 鯨）とZX-10（ZXT00B / 鯱）のオーナーの方々が参加されています。老若男女、所有歴やノーマル・カスタム不問で、参加される方々は皆、気さくな常識人ばかりです。初参加でもお気軽にご参加ください。女性参加者絶賛大募集中（笑）</p>
-        </div>
-
-        <div class="faqItem additionalFAQ">
-          <h3 class="faqQuestion"><span class="material-icons">quiz</span>いつ開催されますか？</h3>
-          <p class="faqAnswer">春（5月頃）をSide-A、秋（11月頃）をSide-Bと称し、定期開催の同一ミーティングとしては珍しい年2回開催です。</p>
-        </div>
-
-        <div class="faqItem additionalFAQ">
-          <h3 class="faqQuestion"><span class="material-icons">quiz</span>遠方からでも参加できますか？</h3>
-          <p class="faqAnswer">はい、他地域からの参加も大歓迎です。関東圏外からの参加も可能で他車種のお仲間同行参加も大丈夫です。</p>
-        </div>
-
-        <div class="faqItem additionalFAQ">
-          <h3 class="faqQuestion"><span class="material-icons">quiz</span>表明無しで参加しても大丈夫ですか？</h3>
-          <p class="faqAnswer">会場や参加者管理の都合上、参加希望される場合は必ず参加表明連絡をお願いしております。直前まで予定が確定できない方のために当日朝まで参加表明連絡を受け付けております。また、表明は参加を強制するものではないので、予定確定できないけど参加方向で調整中という場合でも気軽に表明してください。</p>
-        </div>
-
-        <div class="faqItem additionalFAQ">
-          <h3 class="faqQuestion"><span class="material-icons">quiz</span>以前開催してた始祖会と同じですか？</h3>
-          <p class="faqAnswer">主催者が異なるので区別できるよう当会は「始祖会関東」と名乗っております。また、「始祖会」という名前を使うことの許可は頂いております。</p>
-        </div>
-
-        <div class="faqItem additionalFAQ">
-          <h3 class="faqQuestion"><span class="material-icons">quiz</span>取材について</h3>
-          <p class="faqAnswer">雑誌やYoutube等のメディア取材は大歓迎ですので、お手数ですが<a href="/contact">お問い合わせ</a>よりご連絡お願いいたします。</p>
-        </div>
-      {/if}
     </div>
 
-    <!-- もっと見る/閉じるボタン -->
     <div class="showMoreContainer">
-      <button 
-        class="showMoreButton"
-        on:click={() => showAllFAQs = !showAllFAQs}
-      >
-        <span class="material-icons">
-          {showAllFAQs ? 'expand_less' : 'expand_more'}
-        </span>
-        {showAllFAQs ? '少なく表示' : 'もっと見る (7件)'}
-      </button>
+      <a href="/faqs" class="showMoreButton">
+        <span class="material-icons">expand_more</span>
+        もっと見る (7件)
+      </a>
     </div>
   </div>
 </section>
 
-{#if false}
-<!-- 次回開催情報セクションを一時非表示（次回再利用予定） -->
 <section class="section">
   <div class="container">
     <h2 class="sectionTitle">次回開催情報</h2>
@@ -1136,11 +1004,11 @@
         <tbody>
           <tr>
             <th>イベント名</th>
-            <td>始祖会 Kanto Owners Meeting 2025 Side-B</td>
+            <td>始祖会 Kanto Owners Meeting 2026 Side-A</td>
           </tr>
           <tr>
             <th>開催日時</th>
-            <td>2025年11月9日（日）9:00〜11:00<br><span class="subTextDark">天候不良等の場合は延期ではなく中止（7日正午までに開催可否を決定し告知します）</span><br><span class="subTextDark">8:00から店舗駐車場に入場できますが、246側の入り口は8:30くらいにならないと開かないので裏から入ってください。</span></td>
+            <td>2026年5月10日（日）9:00〜11:00<br><span class="subTextDark">天候不良等の場合は延期ではなく中止（8日正午までに開催可否を決定し告知します）</span><br><span class="subTextDark">8:00から店舗駐車場に入場できますが、246側の入り口は8:30くらいにならないと開かないので裏から入ってください。</span></td>
           </tr>
           <tr>
             <th>開催場所</th>
@@ -1168,7 +1036,7 @@
                 </div>
               </div>
               <div class="accessMapContainer" style="margin-top: 20px;">
-                <img src="/images/access-map.webp" alt="会場アクセスマップ" style="width: 100%; height: auto; border-radius: 5px;" loading="lazy">
+                <img src="/images/access-map.webp" alt="会場アクセスマップ" width="846" height="768" style="width: 100%; height: auto; border-radius: 5px;" loading="lazy">
               </div>
             </td>
           </tr>
@@ -1205,13 +1073,11 @@
             <td>
               <ul style="margin: 0; padding-left: 20px; list-style-type: disc;">
                 <li><a href="https://happy-r.co.jp/" target="_blank" rel="noopener noreferrer">Riders Base Riberty</a> さま</li>
-                <li><a href="https://event.webike.net/event/3322/" target="_blank" rel="noopener noreferrer">Webike!</a> さま</li>
+                <li><a href="https://event.webike.net/event/4133/" target="_blank" rel="noopener noreferrer">Webike!</a> さま</li>
               </ul>
             </td>
           </tr>
 
-          {#if false}
-          <!-- 申し込み導線を一時非表示（次回再利用予定） -->
           <tr>
             <th>申し込み方法</th>
             <td>
@@ -1240,7 +1106,6 @@
               </div>
             </td>
           </tr>
-          {/if}
           <tr>
             <th>現在の参加台数</th>
             <td>
@@ -1252,19 +1117,19 @@
                     <span class="targetInfo">/ 目標 30台（達成率: 83%）</span>
                   </div>
                   <div class="bikeBreakdown">
-                    <span class="breakdownItem">GPZ1000RX: 11台</span>
+                    <span class="breakdownItem">GPZ1000RX: 10台</span>
                     <span class="divider">|</span>
-                    <span class="breakdownItem">ZX-10: 14台</span>
+                    <span class="breakdownItem">ZX-10: 15台</span>
                   </div>
                 </div>
                 <div class="progressBarContainer">
                   <div class="progressBar" style="width: 83%">
-                    <div class="progressBarRX" style="width: 44%"></div>
-                    <div class="progressBarZX10" style="width: 56%"></div>
+                    <div class="progressBarRX" style="width: 40%"></div>
+                    <div class="progressBarZX10" style="width: 60%"></div>
                   </div>
                 </div>
                 <div class="participantListLink">
-                  <a href="https://zx10.ketabawo.asia/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://zx10.ketabawo.asia/2026/03/02/%e5%a7%8b%e7%a5%96%e4%bc%9a-kanto-owners-meeting-2026-side-a%e3%81%ae%e3%81%94%e6%a1%88%e5%86%85/" target="_blank" rel="noopener noreferrer">
                     <span class="material-icons">list_alt</span>
                     参加予定者一覧はブログで公開中！
                   </a>
@@ -1276,60 +1141,8 @@
       </table>
   </div>
 </section>
-{/if}
 
 <style>
-  /* Flash Banner Styles */
-  .flash-banner {
-    width: 100%;
-    padding: 16px 20px;
-    position: relative;
-    z-index: 1000;
-  }
-
-  .flash-alert {
-    background: linear-gradient(135deg, #d32f2f 0%, #c62828 100%);
-    color: #fff;
-    border-bottom: 3px solid #b71c1c;
-  }
-
-  .flash-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .flash-content .material-icons {
-    font-size: 24px;
-    flex-shrink: 0;
-  }
-
-  .flash-message {
-    flex: 1;
-    line-height: 1.5;
-  }
-
-  .flash-message strong {
-    font-weight: 700;
-    margin-right: 8px;
-  }
-
-  @media (max-width: 767px) {
-    .flash-banner {
-      padding: 12px 16px;
-    }
-
-    .flash-content .material-icons {
-      font-size: 20px;
-    }
-
-    .flash-message {
-      font-size: 0.9rem;
-    }
-  }
-
   .hero {
     color: #fff;
     padding: 80px 0;
@@ -1347,11 +1160,18 @@
     left: 0;
     width: 100%;
     height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--hero-bg-sp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 1;
     opacity: 1;
+  }
+
+  @media (min-width: 768px) {
+    .hero-bg {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--hero-bg);
+    }
   }
 
   /* Mobile adjustments */
@@ -1453,7 +1273,7 @@
     padding: 0 20px;
   }
 
-  .heroContent h2 {
+  .heroContent h1 {
     margin: 0;
   }
 
@@ -1473,7 +1293,6 @@
   .heroSubtitle {
     font-size: 1.2rem;
     margin: 0 0 30px 0;
-    opacity: 0.9;
     font-family: Arial, Helvetica, sans-serif;
   }
 
@@ -1590,7 +1409,6 @@
     gap: 8px;
     color: #fff;
     font-size: 1rem;
-    opacity: 0.9;
   }
 
   .countdown svg {
@@ -1644,17 +1462,9 @@
     width: 400px;
     height: 300px;
     background-color: #f0f0f0;
+    background-size: cover;
+    background-position: center;
     border-radius: 5px;
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
-  }
-
-  .featureImage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
   }
 
   .featureText {
@@ -2129,26 +1939,6 @@
     transform: scale(1.1);
   }
 
-  /* 追加の参加者の声アニメーション */
-  .additionalTestimonial {
-    animation: fadeInUp 0.5s ease-out forwards;
-  }
-
-  /* 追加のよくある質問アニメーション */
-  .additionalFAQ {
-    animation: fadeInUp 0.5s ease-out forwards;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
   @media (max-width: 767px) {
     .testimonialsContainer {
@@ -2289,7 +2079,7 @@
 
 
   .divider {
-    color: #ccc;
+    color: #767676;
   }
 
   .currentCount {
@@ -2484,7 +2274,7 @@
 
   .entryForm input::placeholder,
   .entryForm textarea::placeholder {
-    color: #bbb;
+    color: #767676;
     opacity: 1;
   }
 
@@ -2574,7 +2364,38 @@
     cursor: not-allowed;
   }
 
-  .alertSuccess,
+  .submitComplete {
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .submitCompleteIcon {
+    font-size: 4rem;
+    color: #28a745;
+  }
+
+  .submitComplete h4 {
+    font-size: 1.4rem;
+    margin: 15px 0 10px;
+    color: #333;
+  }
+
+  .submitComplete p {
+    color: #555;
+    margin: 5px 0;
+  }
+
+  .submitCompleteNote {
+    font-size: 0.85rem;
+    color: #767676;
+    margin: 20px 0;
+    line-height: 1.8;
+  }
+
+  .submitComplete .btn {
+    margin-top: 10px;
+  }
+
   .alertError {
     display: flex;
     align-items: center;
@@ -2583,21 +2404,11 @@
     border-radius: 5px;
     margin-top: 15px;
     font-size: 0.9rem;
-  }
-
-  .alertSuccess {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-  }
-
-  .alertError {
     background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
   }
 
-  .alertSuccess .material-icons,
   .alertError .material-icons {
     font-size: 1.1rem;
     margin-right: 8px;
@@ -2835,7 +2646,7 @@
   .event-conditions .signature {
     text-align: right;
     font-style: italic;
-    color: #6c757d;
+    color: #595959;
     margin: 10px 0 0 0;
     font-size: 0.95rem;
   }

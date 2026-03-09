@@ -127,13 +127,24 @@
 <svelte:head>
   <title>お問い合わせ | 始祖会 Kanto Owners Meeting</title>
   <meta name="description" content="始祖会Kanto Owners Meetingへのお問い合わせページ。GPZ1000RX・ZX-10オーナーズミーティングに関するご質問・ご要望はこちらから。">
-  <link rel="canonical" href="https://kanto.shisokai.info/contact">
+  <link rel="canonical" href="https://kanto.shisokai.info/contact/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kanto.shisokai.info/contact/">
+  <meta property="og:title" content="お問い合わせ | 始祖会 Kanto Owners Meeting">
+  <meta property="og:description" content="始祖会Kanto Owners Meetingへのお問い合わせページ。GPZ1000RX・ZX-10オーナーズミーティングに関するご質問・ご要望はこちらから。">
+  <meta property="og:image" content="https://kanto.shisokai.info/images/OGP.png">
+  <meta property="og:site_name" content="始祖会 Kanto Owners Meeting">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="お問い合わせ | 始祖会 Kanto Owners Meeting">
+  <meta name="twitter:description" content="始祖会Kanto Owners Meetingへのお問い合わせページ。GPZ1000RX・ZX-10オーナーズミーティングに関するご質問・ご要望はこちらから。">
+  <meta name="twitter:image" content="https://kanto.shisokai.info/images/OGP.png">
   {@html `<script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "お問い合わせ",
     "description": "始祖会Kanto Owners Meetingへのお問い合わせページ",
-    "url": "https://kanto.shisokai.info/contact"
+    "url": "https://kanto.shisokai.info/contact/"
   })}</script>`}
   <!-- Google reCAPTCHA -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -245,7 +256,7 @@
       </div>
 
       <div class="alternativeContacts">
-        <h3>その他の連絡方法</h3>
+        <h2>その他の連絡方法</h2>
         <div class="contactMethods">
           <a href="https://zx10.ketabawo.asia/" target="_blank" rel="noopener" class="contactMethod">
             <span class="material-icons">web</span>
@@ -281,7 +292,6 @@
 
   .pageSubtitle {
     font-size: 1.2rem;
-    opacity: 0.9;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
   }
@@ -335,7 +345,7 @@
     position: relative;
     background-color: #fff;
     padding: 0 20px;
-    color: #999;
+    color: #767676;
     font-size: 0.95rem;
     font-weight: 500;
   }
@@ -347,7 +357,7 @@
     margin-top: 0;
   }
 
-  .alternativeContacts h3 {
+  .alternativeContacts h2 {
     margin: 0 0 20px 0;
     color: #333;
     font-size: 1.2rem;
@@ -422,7 +432,7 @@
 
   .formGroup input::placeholder,
   .formGroup textarea::placeholder {
-    color: #aaa;
+    color: #767676;
   }
 
   .formGroup input:focus,

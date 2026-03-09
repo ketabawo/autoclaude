@@ -33,7 +33,7 @@
   }
 
   function updateCountdown() {
-    const deadline = new Date('2025-11-09T06:00:00+09:00'); // 2025年11月9日 朝6時（JST）
+    const deadline = new Date('2026-05-10T06:00:00+09:00'); // 2026年5月10日 朝6時（JST）
     const now = new Date();
     const diff = deadline.getTime() - now.getTime();
 
@@ -103,7 +103,7 @@
     <nav class="siteHeader__container">
       <div class="siteHeader__content">
       <a href="/" class="siteLogo">
-        <h1><img src="/images/logo.webp" alt="始祖会/SHISOKAI" class="siteLogo__image" /></h1>
+        <div><img src="/images/logo.webp" alt="始祖会/SHISOKAI" class="siteLogo__image" width="484" height="105" /></div>
       </a>
       <button class="menuToggle" class:menuToggle--open={isMenuOpen} on:click={toggleMenu} aria-label="メニューを開く">
         <span class="menuToggle__line"></span>
@@ -119,6 +119,18 @@
           <span class="navMenu__icon material-icons">person</span>
           <span class="navMenu__text">主宰について</span>
         </a></li>
+        <li class="navMenu__item"><a href="/voices" class="navMenu__link" class:navMenu__link--active={$page.url.pathname === '/voices'} on:click={closeMenu}>
+          <span class="navMenu__icon material-icons">forum</span>
+          <span class="navMenu__text">参加者の声</span>
+        </a></li>
+        <li class="navMenu__item"><a href="/media" class="navMenu__link" class:navMenu__link--active={$page.url.pathname === '/media'} on:click={closeMenu}>
+          <span class="navMenu__icon material-icons">article</span>
+          <span class="navMenu__text">メディア掲載</span>
+        </a></li>
+        <li class="navMenu__item"><a href="/faqs" class="navMenu__link" class:navMenu__link--active={$page.url.pathname === '/faqs'} on:click={closeMenu}>
+          <span class="navMenu__icon material-icons">help_outline</span>
+          <span class="navMenu__text">よくある質問</span>
+        </a></li>
         <li class="navMenu__item"><a href="/contact" class="navMenu__link" class:navMenu__link--active={$page.url.pathname === '/contact'} on:click={closeMenu}>
           <span class="navMenu__icon material-icons">mail</span>
           <span class="navMenu__text">お問い合わせ</span>
@@ -133,7 +145,6 @@
 </main>
 
 <!-- フローティング参加表明ボタンとカウントダウン（ホームページでfeatures以降に表示） -->
-{#if false}
 {#if $page.url.pathname === '/' && showFloatingButton}
 <div class="floatingContainer" transition:fly="{{ y: 50, duration: 400 }}">
   <!-- カウントダウン吹き出し -->
@@ -156,19 +167,18 @@
   </button>
 </div>
 {/if}
-{/if}
 
 <section class="sponsorSection">
   <div class="sponsorSection__container">
     <div class="sponsorSection__banners">
       <a href="https://x.com/Ours_moto" target="_blank" rel="noopener noreferrer">
-        <img src="/images/banner-ours.webp" alt="Ours moto cafe" class="sponsorSection__banner" />
+        <img src="/images/banner-ours.webp" alt="Ours moto cafe" class="sponsorSection__banner" width="300" height="100" />
       </a>
       <a href="http://cafedoor.jp/" target="_blank" rel="noopener noreferrer">
-        <img src="/images/banner-door.webp" alt="cafe door" class="sponsorSection__banner" />
+        <img src="/images/banner-door.webp" alt="cafe door" class="sponsorSection__banner" width="300" height="100" />
       </a>
       <a href="http://www.coregarage-japan.com/" target="_blank" rel="noopener noreferrer">
-        <img src="/images/banner-coregarage.webp" alt="Core Garage" class="sponsorSection__banner" />
+        <img src="/images/banner-coregarage.webp" alt="Core Garage" class="sponsorSection__banner" width="300" height="100" />
       </a>
     </div>
   </div>
@@ -207,7 +217,7 @@
       <div class="shareButtons">
         <!-- X (Twitter) -->
         <a
-          href="https://twitter.com/intent/tweet?text={encodeURIComponent('始祖会 Kanto Owners Meeting 2025 Side-B\nGPZ1000RX & ZX-10オーナーズミーティング\n2025年11月9日(日) 9:00-11:00\n')}&url={encodeURIComponent('https://kanto.shisokai.info')}&hashtags={encodeURIComponent('始祖会,GPZ1000RX,ZX10,バイク')}"
+          href="https://twitter.com/intent/tweet?text={encodeURIComponent('始祖会 Kanto Owners Meeting 2026 Side-A\nGPZ1000RX & ZX-10オーナーズミーティング\n2026年5月10日(日) 9:00-11:00\n')}&url={encodeURIComponent('https://kanto.shisokai.info')}&hashtags={encodeURIComponent('始祖会,GPZ1000RX,ZX10,バイク')}"
           target="_blank"
           rel="noopener noreferrer"
           class="shareButton shareX"
@@ -223,7 +233,7 @@
           on:click={() => {
             navigator.share ? 
               navigator.share({
-                title: '始祖会 Kanto Owners Meeting 2025 Side-B',
+                title: '始祖会 Kanto Owners Meeting 2026 Side-A',
                 text: 'GPZ1000RX & ZX-10オーナーズミーティング',
                 url: 'https://kanto.shisokai.info'
               }) :
@@ -264,6 +274,17 @@
         </a>
       </div>
     </div>
+
+    <nav class="footerNav">
+      <ul class="footerNav__list">
+        <li><a href="/">始祖会TOP</a></li>
+        <li><a href="/about">主宰について</a></li>
+        <li><a href="/voices">参加者の声</a></li>
+        <li><a href="/media">メディア掲載</a></li>
+        <li><a href="/faqs">よくある質問</a></li>
+        <li><a href="/contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
 
     <div class="footerBottom">
       <p class="siteFooter__copyright">&copy; 2023-{new Date().getFullYear()} SHISOKAI KANTO All rights reserved.</p>
@@ -315,7 +336,7 @@
     opacity: 0.8;
   }
 
-  .siteLogo h1 {
+  .siteLogo div {
     margin: 0;
     font-size: inherit;
   }
@@ -612,6 +633,32 @@
     height: 16px;
   }
 
+  .footerNav {
+    border-top: 1px solid #444;
+    padding: 15px 0;
+  }
+
+  .footerNav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+  }
+
+  .footerNav__list a {
+    color: #d4d4d4;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+  }
+
+  .footerNav__list a:hover {
+    color: #fff;
+  }
+
   .footerBottom {
     border-top: 1px solid #444;
     padding-top: 15px;
@@ -622,7 +669,7 @@
   .siteFooter__copyright {
     margin: 0;
     font-size: 0.75rem;
-    color: #ccc;
+    color: #d4d4d4;
   }
 
   @media (min-width: 768px) {
